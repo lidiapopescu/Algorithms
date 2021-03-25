@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import com.lidia.algorithms.Main;
 
 public class Solutions7 {
 
+	
 	/*
      * INPUT 
      * 6
@@ -150,5 +152,154 @@ public class Solutions7 {
 //			System.out.println(sum);
 		}
 		return sum;
+	}
+
+	public static void diagonalDifference() throws NumberFormatException, IOException {
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getProperty("OUTPUT_PATH")));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<List<Integer>> arr = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            String[] arrRowTempItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+            List<Integer> arrRowItems = new ArrayList<>();
+
+            for (int j = 0; j < n; j++) {
+                int arrItem = Integer.parseInt(arrRowTempItems[j]);
+                arrRowItems.add(arrItem);
+            }
+
+            arr.add(arrRowItems);
+        }
+
+        int result = diagonalDifference(arr);
+        result = diagonalDifferenceV2(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+	}
+
+	/*
+	 * INPUT 
+	 * 3 
+	 * 11 2 4 
+	 * 4  5 6 
+	 * 10 8 -12 
+	 * OUTPUT 
+	 * 15
+	 * https://www.hackerrank.com/challenges/diagonal-difference/problem
+	 * https://www.hackerrank.com/challenges/diagonal-difference/leaderboard
+	 */
+	private static int diagonalDifference(List<List<Integer>> arr) {
+		int d1=0, d2=arr.size()-1;
+		int sumD1 =0 , sumD2 = 0;
+		for (int i=0; i< arr.size(); i++) {
+			for (int j=0; j< arr.get(i).size(); j++) {
+				if (d1 == j) {
+					sumD1 = sumD1 + arr.get(i).get(j);
+					d1++;
+					break;
+				}				
+			}
+			
+			for (int j=arr.get(i).size()-1; j>=0; j--) {
+				if (d2 == j) {
+					sumD2 = sumD2 + arr.get(i).get(j);
+					d2--;
+					break;
+				}
+			}
+		}
+		System.out.println("SUM D1= " + sumD1); //4
+		System.out.println("SUM D2= " + sumD2); //19
+		int result = Math.abs(sumD1- sumD2);
+		System.out.println("diagonalDifference Result "+ result); //15
+//		return Math.abs(sumD1- sumD2);
+		return result;
+	}
+
+	public static void diagonalDifferenceBest() {
+		Scanner in = new Scanner(System.in); 
+		int n ;
+		int diag1 = 0 ; int diag2 = 0;
+		n = Integer.parseInt(in.nextLine());
+		for(int i =0 ; i < n; i++){
+			String str[] = in.nextLine().split(" ");
+			diag1 = diag1 + Integer.parseInt(str[i]);
+			diag2 = diag2 + Integer.parseInt(str[n-1-i]);
+		}
+		
+		int diagDiff = Math.abs(diag1 -  diag2);		
+		System.out.println(diagDiff);
+	}
+	
+	private static int diagonalDifferenceV2(List<List<Integer>> arr) {
+		//TODO
+		int leftdiagonal = 0, rightdiagonal = 0;
+		for(int i = 0, j = arr.get(0).size()-1; i < arr.get(0).size(); i++, j--){
+		        leftdiagonal = leftdiagonal + arr.get(i).get(i);
+		        rightdiagonal = rightdiagonal + arr.get(i).get(j);
+		}
+		int result =  Math.abs(leftdiagonal - rightdiagonal);
+		System.out.println("diagonalDifferenceV2 "+ result);
+//		return Math.abs(leftdiagonal - rightdiagonal);
+		return result;
+	}
+
+	
+	/*
+	 * Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero.
+	 * INPUT
+	 * 6
+	 * -4 3 -9 0 4 1 
+	 * OUTPUT
+	 * 0.500000
+	 * 0.333333
+	 * 0.166667
+	 * https://www.hackerrank.com/challenges/plus-minus/problem
+	 * */
+	public static void plusMinus() {
+		Scanner scanner = new Scanner(System.in); 
+		int n = scanner.nextInt();
+		scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+		int[] arr = new int[n];
+
+		String[] arrItems = scanner.nextLine().split(" ");
+		scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+		for (int i = 0; i < n; i++) {
+			int arrItem = Integer.parseInt(arrItems[i]);
+			arr[i] = arrItem;
+		}
+
+		plusMinus(arr);
+
+		scanner.close();
+	}
+
+	private static void plusMinus(int[] arr) {
+		int poz=0, neg=0, zero=0;
+		for (int i=0; i< arr.length; i++) {
+			if (arr[i]<0) {
+				neg++;
+			}
+			else if ( arr[i]==0) {
+				zero++;
+			}
+			else {
+				poz++;
+			}
+		}
+		DecimalFormat df = new DecimalFormat("0.000000");
+		System.out.println(df.format(Float.valueOf(poz)/arr.length));
+		System.out.println(df.format(Float.valueOf(neg)/arr.length));
+		System.out.println(df.format(Float.valueOf(zero)/arr.length));
 	}
 }

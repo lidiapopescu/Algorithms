@@ -20,8 +20,8 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		
-		bufferedWriter  = new BufferedWriter(new FileWriter(System.getProperty("OUTPUT_PATH")));
-		bufferedReader  = new BufferedReader(new InputStreamReader(System.in));
+//		bufferedWriter  = new BufferedWriter(new FileWriter(System.getProperty("OUTPUT_PATH")));
+//		bufferedReader  = new BufferedReader(new InputStreamReader(System.in));
 		
 //		int result = Solutions7.simpleArraySum(getArray());
 //        System.out.println("RESULT 7 "+ result);
@@ -30,11 +30,17 @@ public class Main {
 //		Solutions7.compareTriplets();
 //		Solutions8.compareTriplets();
 		
-		Solutions7.aVeryBigSum();
+//		Solutions7.aVeryBigSum();
+//		Solutions7.diagonalDifference();
+//		Solutions7.diagonalDifferenceBest();
+//		Solutions8.diagonalDifference();
+		
+		Solutions7.plusMinus();
+//		Solutions8.plusMinus();
         
-        bufferedWriter.newLine();
-        bufferedReader.close();
-        bufferedWriter.close();
+//        bufferedWriter.newLine();
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 
 	static int[] getArray(){
