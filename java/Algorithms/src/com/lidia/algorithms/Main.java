@@ -35,9 +35,11 @@ public class Main {
 //		Solutions7.diagonalDifferenceBest();
 //		Solutions8.diagonalDifference();
 		
-		Solutions7.plusMinus();
+//		Solutions7.plusMinus();
 //		Solutions8.plusMinus();
         
+		Solutions7.staircase();
+				
 //        bufferedWriter.newLine();
 //        bufferedReader.close();
 //        bufferedWriter.close();

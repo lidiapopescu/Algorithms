@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import com.lidia.algorithms.Main;
 
@@ -302,4 +304,42 @@ public class Solutions7 {
 		System.out.println(df.format(Float.valueOf(neg)/arr.length));
 		System.out.println(df.format(Float.valueOf(zero)/arr.length));
 	}
+
+	/**
+	 * INPUT
+	 * 4
+	 * OUTPUT
+	 *    #
+	 *   ##
+	 *  ###
+	 * ####
+	 * https://www.hackerrank.com/challenges/staircase/problem
+	 * */
+	public static void staircase() {
+		Scanner scanner = new Scanner(System.in); 
+		int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        // -----------------
+        int ref =0;
+		StringBuffer s =null;
+        for (int i=1; i<=n; i++) {
+        	s = new StringBuffer();
+            ref = n-i;
+            while (ref > 0) {
+                s.append(" ");
+                ref--;
+            }
+            ref=i;
+            while (ref >0 ) {
+            	s.append("#");
+            	ref--;
+            }      
+            System.out.println(s.toString());
+        }
+
+        scanner.close();
+	}
+
+	
 }

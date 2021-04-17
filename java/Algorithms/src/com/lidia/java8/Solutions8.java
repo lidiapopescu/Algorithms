@@ -129,6 +129,7 @@ public class Solutions8 {
 
 	//https://www.geeksforgeeks.org/streams-arrays-java-8/
 	private static void plusMinus(int[] arr) {
+		//TODO
 		int poz=0, neg=0, zero=0;
 		arr = new int[] {-4, 3, -9, 0, 4, 1};
 		Arrays.stream(arr)
