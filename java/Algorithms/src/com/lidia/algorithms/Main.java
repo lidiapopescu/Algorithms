@@ -2,12 +2,9 @@ package com.lidia.algorithms;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import com.lidia.java7.Solutions7;
-import com.lidia.java8.Solutions8;
 
 import java.util.*;
 
@@ -38,7 +35,8 @@ public class Main {
 //		Solutions7.plusMinus();
 //		Solutions8.plusMinus();
         
-		Solutions7.staircase();
+//		Solutions7.staircase();
+		Solutions7.extraLongFactorials();
 				
 //        bufferedWriter.newLine();
 //        bufferedReader.close();

@@ -5,13 +5,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import com.lidia.algorithms.Main;
 
@@ -341,5 +339,34 @@ public class Solutions7 {
         scanner.close();
 	}
 
-	
+	/**
+	 * Calculate and print the factorial of a given integer.
+	 * n!=n*(n-1)*(n-2)*...*3*2*1
+	 * 1<=n<=100
+	 * https://www.hackerrank.com/challenges/extra-long-factorials/problem
+	 * 
+	 * Input:
+	 * 25
+	 * Output:
+	 * 15511210043330985984000000
+	 * Input:
+	 * 45
+	 * Output:
+	 * 119622220865480194561963161495657715064383733760000000000
+	 * */
+	public static void extraLongFactorials() {
+		 Scanner scanner = new Scanner(System.in);
+		 int n = scanner.nextInt();
+	     scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+	     scanner.close();
+	     
+	     long i=0;
+	     BigInteger result = BigInteger.valueOf(1);
+	     while (i<n) {
+	    	 i++;
+	    	 result=result.multiply(BigInteger.valueOf(i));
+	     }
+	     System.out.println(result);
+	     System.out.println();
+	}
 }
